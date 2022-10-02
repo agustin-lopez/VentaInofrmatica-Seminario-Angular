@@ -1,0 +1,9 @@
+<div class="cart-container">
+    <h2>Carrito</h2>
+
+    <ul>
+        <li *ngFor = "let product of cartList$ | async">
+            [{{product.component_type}} {{product.brand}}] {{product.name}}: {{product.quantity}}
+        </li>
+    </ul>
+</div>

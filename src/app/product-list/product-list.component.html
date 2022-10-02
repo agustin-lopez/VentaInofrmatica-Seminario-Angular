@@ -1,0 +1,31 @@
+<div class="product-list-container">
+    <h2>Lista de productos</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Marca</th>
+                <th>Tipo de componente</th>
+                <th>Precio</th>
+                <th>Comprar</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of products">
+                <td>{{product.name}}</td>
+                <td>{{product.brand}}</td>
+                <td>{{product.component_type}}</td>
+                <td>AR{{product.price | currency}}</td>
+                <td>
+                    <div *ngIf="product.stock">
+                        <app-input-integer [(quantity)]="product.quantity" [max]="product.stock"></app-input-integer>
+                        <button class="btn" (click)="addToCart(product)">Agregar</button>
+                    </div>
+                </td>
+                <td><span *ngIf="product.stock == 0">AGOTADO</span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
